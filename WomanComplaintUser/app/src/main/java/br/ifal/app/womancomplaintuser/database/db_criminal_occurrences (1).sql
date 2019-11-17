@@ -1,5 +1,5 @@
-create database db_woman_complaint;
-use db_woman_complaint;
+create database db_criminal_occurences;
+use db_criminal_occurences;
 
 create table tb_involved_age (
 	invo_age_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -8,7 +8,7 @@ create table tb_involved_age (
 
 create table tb_sexes (
 	sex_id INT PRIMARY KEY AUTO_INCREMENT,
-	sex_sex ENUM('FEMININO', 'MASCULINO')
+	sex_sex ENUM('FEMALE', 'MALE')
 );
 
 create table tb_involved (
@@ -24,7 +24,7 @@ create table tb_addresses (
 	addr_id INT PRIMARY KEY AUTO_INCREMENT,
 	addr_neighborhood VARCHAR(45) NOT NULL,
     addr_street TEXT NOT NULL,
-    addr_numer VARCHAR(4) NOT NULL,
+    addr_number VARCHAR(4) NOT NULL,
     addr_zip_code VARCHAR(45) NOT NULL,
     addr_city VARCHAR(45) NOT NULL
 );
@@ -64,6 +64,7 @@ create table tb_occurrences (
     FOREIGN KEY(occu_offe_id) REFERENCES tb_offenders (offe_id),
     FOREIGN KEY(occu_addr_id) REFERENCES tb_addresses (addr_id),
     FOREIGN KEY(occu_user_id) REFERENCES tb_users(user_id)
+    
 );
 
 
