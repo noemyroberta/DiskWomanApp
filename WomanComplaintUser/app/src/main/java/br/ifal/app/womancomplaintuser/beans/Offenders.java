@@ -2,48 +2,53 @@ package br.ifal.app.womancomplaintuser.beans;
 
 import java.io.Serializable;
 
-public class Womans extends Serializable{
+public class Offenders implements Serializable {
 
     private int id;
     private String name;
-    private String email;
+    private String appearence;
 
-    public Womans(int id, String name, String email) {
+    public Offenders(int id, String name, String appearence) {
         id = id;
         name = name;
-        email = email;
+        appearence = appearence;
     }
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         id = id;
     }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAppearence()
+    {
+        return appearence;
     }
 
-    public void setEmail(String email) {
-        email = email;
+    public void setAppearence(String appearence) {
+        appearence = appearence;
     }
 
     @Override
     public String toString() {
-        return "Womans{" +
+        return "Offenders{" +
                 "Id=" + id +
                 ", Name='" + name + '\'' +
-                ", Email='" + email + '\'' +
+                ", Appearence='" + appearence + '\'' +
                 '}';
     }
 }

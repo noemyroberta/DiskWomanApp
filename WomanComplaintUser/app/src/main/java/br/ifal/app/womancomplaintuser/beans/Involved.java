@@ -2,16 +2,14 @@ package br.ifal.app.womancomplaintuser.beans;
 
 import java.io.Serializable;
 
-public class Womans extends Serializable{
+public class Involved implements Serializable {
 
     private int id;
     private String name;
-    private String email;
 
-    public Womans(int id, String name, String email) {
+    public Involved(int id, String name) {
         id = id;
         name = name;
-        email = email;
     }
 
     public int getId() {
@@ -30,20 +28,11 @@ public class Womans extends Serializable{
         name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        email = email;
-    }
-
     @Override
     public String toString() {
-        return "Womans{" +
+        return "Involved{" +
                 "Id=" + id +
                 ", Name='" + name + '\'' +
-                ", Email='" + email + '\'' +
                 '}';
     }
 }
