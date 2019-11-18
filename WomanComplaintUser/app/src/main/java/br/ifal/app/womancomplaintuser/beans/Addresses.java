@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Addresses implements Serializable {
 
-    private String neighborhood ;
+    private String neighborhood;
     private String street;
     private String number;
     private String zipCod;
@@ -32,9 +32,7 @@ public class Addresses implements Serializable {
         return street;
     }
 
-    public void setStreet(String street) {
-        Street = street;
-    }
+    public void setStreet(String street) { street = street; }
 
     public String getNumber() {
         return number;
