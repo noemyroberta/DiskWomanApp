@@ -1,5 +1,8 @@
 package br.ifal.app.womancomplaintuser.database;
 
-public class DatabaseConnection {
-    
+import android.database.sqlite.SQLiteDatabase;
+
+public class DatabaseConnection extends SQLiteDatabase {
+
+
 }
