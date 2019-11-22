@@ -2,16 +2,21 @@ package br.ifal.app.womancomplaintuser.beans;
 
 import java.io.Serializable;
 
-public class Womans extends Serializable{
+public class Womans implements Serializable {
 
     private int id;
     private String name;
     private String email;
 
     public Womans(int id, String name, String email) {
-        id = id;
-        name = name;
-        email = email;
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
+    public Womans(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     public int getId() {
@@ -19,7 +24,7 @@ public class Womans extends Serializable{
     }
 
     public void setId(int id) {
-        id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -27,7 +32,7 @@ public class Womans extends Serializable{
     }
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
     }
 
     public String getEmail() {
@@ -35,7 +40,7 @@ public class Womans extends Serializable{
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
 
     @Override
