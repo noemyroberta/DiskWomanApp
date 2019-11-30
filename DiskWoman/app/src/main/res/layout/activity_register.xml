@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:background="#000">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -17,7 +16,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
             android:text="Registro de Ocorrência"
-            android:textColor="#FFFF"
+            android:textColor="#000"
             android:textSize="24dp" />
 
         <TextView
@@ -26,7 +25,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="12dp"
             android:text="Dados Pessoais"
-            android:textColor="#FFFF"
+            android:textColor="#000"
             android:textSize="15dp" />
 
         <TextView
@@ -34,15 +33,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:text="NOME (Opcional)"
-            android:textColor="#FFFF"
+            android:textColor="#000"
             android:textSize="12dp" />
 
         <EditText
+            android:drawable="@drawable/personage"
             android:id="@+id/edittext_name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:textColor="#FFFF"
+            android:textColor="#000000"
             android:hint="Ex.: Carolina Fernanda Santos" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:text="EMAIL (Opcional)"
-            android:textColor="#FFFF"
+            android:textColor="#000"
             android:textSize="12dp" />
 
         <EditText
@@ -66,7 +66,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="12dp"
             android:text="Localização"
-            android:textColor="#FFFF"
+            android:textColor="#000"
             android:textSize="15dp" />
 
         <TextView
@@ -75,7 +75,7 @@
             android:layout_marginLeft="2dp"
             android:text="CEP *"
             android:textSize="12dp"
-            android:textColor="#FFFF"/>
+            android:textColor="#000"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:textColor="#FFFF"
-                android:background="@drawable/colorpink"
+                android:background="@drawable/colorblack"
                 android:text="Buscar" />
 
         </LinearLayout>
@@ -110,7 +110,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="CIDADE *"
                 android:textSize="12dp"
-                android:textColor="#FFFF"/>
+                android:textColor="#000"/>
 
             <TextView
                 android:layout_width="190dp"
@@ -118,7 +118,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="BAIRRO *"
                 android:textSize="12dp"
-                android:textColor="#FFFF"/>
+                android:textColor="#000"/>
 
         </LinearLayout>
 
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="RUA *"
-                android:textColor="#FFFF"
+                android:textColor="#000"
                 android:textSize="12dp" />
 
             <TextView
@@ -160,7 +160,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="NÚMERO *"
                 android:textSize="12dp"
-                android:textColor="#FFFF"/>
+                android:textColor="#000"/>
 
         </LinearLayout>
 
@@ -189,7 +189,7 @@
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/colorpink"
+            android:background="@drawable/colorblack"
             android:textColor="#FFFF"
             android:text="PRÓXIMO" />
     </LinearLayout>
