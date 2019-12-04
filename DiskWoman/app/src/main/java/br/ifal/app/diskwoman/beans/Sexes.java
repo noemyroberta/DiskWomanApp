@@ -17,8 +17,8 @@ public enum Sexes {
 
     @Override
     public String toString() {
-        return "Sexes{" +
-                "sex='" + sex + '\'' +
+        return "Sexes {" +
+                "sex ='" + sex + '\'' +
                 '}';
     }
 }

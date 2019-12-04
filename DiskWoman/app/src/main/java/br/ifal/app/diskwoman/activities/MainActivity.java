@@ -9,7 +9,7 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import br.ifal.app.womancomplaintuser.R;
+import br.ifal.app.diskwoman.R;
 
 
 public class MainActivity extends AppCompatActivity {

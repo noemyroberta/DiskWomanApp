@@ -8,27 +8,24 @@ public class Occurrences implements Serializable {
     private String title;
     private String description;
     private String image;
-    private String media;
     private String date;
-    private boolean status;
+    private String addressCep;
+    private String addressNumber;
+    private String addressComplement;
 
-    public Occurrences(int id, String title, String description, String image, String media, String date, boolean status) {
+    public Occurrences(int id, String title, String description, String image, String date,
+                       String addressCep, String addressNumber, String addressComplement) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.image = image;
-        this.media = media;
         this.date = date;
-        this.status = status;
+        this.addressCep = addressCep;
+        this.addressNumber = addressNumber;
+        this.addressComplement = addressComplement;
     }
 
-    public Occurrences(String title, String description, String date, boolean status) {
-        this.title = title;
-        this.description = description;
-        this.image = image;
-        this.media = media;
-        this.date = date;
-        this.status = status;
+    public Occurrences() {
 
     }
 
@@ -64,14 +61,6 @@ public class Occurrences implements Serializable {
         this.image = image;
     }
 
-    public String getMedia() {
-        return media;
-    }
-
-    public void setMedia(String media) {
-        this.media = media;
-    }
-
     public String getDate() {
         return date;
     }
@@ -80,24 +69,31 @@ public class Occurrences implements Serializable {
         this.date = date;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
+    public String getAddressCep() { return addressCep; }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setAddressCep(String addressCep) { this.addressCep = addressCep; }
+
+    public String getAddressNumber() { return addressNumber; }
+
+    public void setAddressNumber(String addressNumber) { this.addressNumber = addressNumber; }
+
+    public String getAddressComplement() { return addressComplement; }
+
+    public void setAddressComplement(String addressComplement) {
+        this.addressComplement = addressComplement;
     }
 
     @Override
     public String toString() {
-        return "Occurrence{" +
-                "Id=" + id +
-                ", Title='" + title + '\'' +
-                ", Description='" + description + '\'' +
-                ", Image='" + image + '\'' +
-                ", Media='" + media + '\'' +
-                ", Date='" + date + '\'' +
-                ", Status=" + status +
+        return "Occurrences {" +
+                "id =" + id +
+                ", title ='" + title + '\'' +
+                ", description ='" + description + '\'' +
+                ", image ='" + image + '\'' +
+                ", date ='" + date + '\'' +
+                ", cep ='" + addressCep + '\'' +
+                ", number ='" + addressNumber + '\'' +
+                ", reference ='" + addressComplement + '\'' +
                 '}';
     }
 }

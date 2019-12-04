@@ -99,7 +99,6 @@
                 android:id="@+id/btn_image_id"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/colorblack"
                 android:text="SELECIONAR IMAGEM"
                 android:textColor="#FFFF" />
 
@@ -108,7 +107,6 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/colorblack"
                 android:text="SELECIONAR VÍDEO"
                 android:textColor="#FFFF" />
 
@@ -130,7 +128,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/colorblack"
             android:text="REGISTRAR"
             android:textColor="#FFFF" />
 

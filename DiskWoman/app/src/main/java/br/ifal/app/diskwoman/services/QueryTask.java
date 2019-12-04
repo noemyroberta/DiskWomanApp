@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 
-import br.ifal.app.womancomplaintuser.R;
+import br.ifal.app.diskwoman.R;
 import br.ifal.app.diskwoman.activities.RegisterOccurrenceActivity;
 
 public class QueryTask extends AsyncTask<String, Object, String> {

@@ -6,10 +6,18 @@ public class Involved implements Serializable {
 
     private int id;
     private String name;
+    private String age;
+    private Sexes sex;
 
-    public Involved(int id, String name) {
-        id = id;
-        name = name;
+    public Involved(int id, String name, String age, Sexes sex) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
+    public Involved() {
+
     }
 
     public int getId() {
@@ -17,7 +25,7 @@ public class Involved implements Serializable {
     }
 
     public void setId(int id) {
-        id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -25,14 +33,24 @@ public class Involved implements Serializable {
     }
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
     }
+
+    public String getAge() { return age; }
+
+    public void setAge(String age) { this.age = age; }
+
+    public Sexes getSex() { return sex; }
+
+    public void setSex() { this.sex = sex; }
 
     @Override
     public String toString() {
-        return "Involved{" +
-                "Id=" + id +
-                ", Name='" + name + '\'' +
+        return "Involved {" +
+                ", id =" + id +
+                ", name ='" + name + '\'' +
+                ", age ='" + age + '\'' +
+                ", sex =" + sex +
                 '}';
     }
 }

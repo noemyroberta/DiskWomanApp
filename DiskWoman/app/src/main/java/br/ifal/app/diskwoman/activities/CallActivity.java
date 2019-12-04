@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import br.ifal.app.womancomplaintuser.R;
+import br.ifal.app.diskwoman.R;
 
 public class CallActivity extends AppCompatActivity {
 

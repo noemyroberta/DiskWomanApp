@@ -37,7 +37,6 @@
             android:textSize="12dp" />
 
         <EditText
-            android:drawable="@drawable/personage"
             android:id="@+id/edittext_name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:textColor="#FFFF"
-                android:background="@drawable/colorblack"
                 android:text="Buscar" />
 
         </LinearLayout>
@@ -189,7 +187,6 @@
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/colorblack"
             android:textColor="#FFFF"
             android:text="PRÓXIMO" />
     </LinearLayout>

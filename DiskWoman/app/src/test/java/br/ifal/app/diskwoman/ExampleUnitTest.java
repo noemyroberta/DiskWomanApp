@@ -1,4 +1,4 @@
-package br.ifal.app.womancomplaintuser;
+package br.ifal.app.diskwoman;
 
 import org.junit.Test;
 

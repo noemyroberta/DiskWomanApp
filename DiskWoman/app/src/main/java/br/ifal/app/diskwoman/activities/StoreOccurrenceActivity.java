@@ -6,7 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
-import br.ifal.app.womancomplaintuser.R;
+import br.ifal.app.diskwoman.R;
 import br.ifal.app.diskwoman.beans.Occurrences;
 
 public class StoreOccurrenceActivity extends AppCompatActivity {

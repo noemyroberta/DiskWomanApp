@@ -7,12 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import br.ifal.app.diskwoman.beans.Addresses;
-import br.ifal.app.diskwoman.beans.Womans;
-import br.ifal.app.diskwoman.daos.AddressesDAO;
-import br.ifal.app.diskwoman.daos.WomansDAO;
 import br.ifal.app.diskwoman.services.QueryTask;
-import br.ifal.app.womancomplaintuser.R;
+import br.ifal.app.diskwoman.R;
 
 public class RegisterOccurrenceActivity extends AppCompatActivity {
 
@@ -55,14 +51,6 @@ public class RegisterOccurrenceActivity extends AppCompatActivity {
                 String neighborhood = editTextNeighborhood.getText().toString();
                 String number = editTextNumber.getText().toString();
                 String zipCode = editTextZipCode.getText().toString();
-
-                Womans womans = new Womans(name, email);
-                Addresses addresses = new Addresses(neighborhood, street, number, zipCode, city);
-
-                WomansDAO.listWomans.add(womans);
-                AddressesDAO.listAddresses.add(addresses);
-
-                System.out.println(womans + "\n" + addresses);
 
                 Intent intent = new Intent(RegisterOccurrenceActivity.this, StoreOccurrenceActivity.class);
                 startActivity(intent);
