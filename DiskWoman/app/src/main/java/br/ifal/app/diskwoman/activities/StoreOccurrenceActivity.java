@@ -30,7 +30,7 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
         String description = editTextDescription.getText().toString();
         String date = editTextDate.getText().toString();
 
-        Occurrences occurrences = new Occurrences(title, description, date, false);
+
 
 
 
