@@ -26,6 +26,7 @@
         <activity android:name="br.ifal.app.diskwoman.activities.StoreOccurrenceActivity" />
         <activity android:name="br.ifal.app.diskwoman.activities.ListOccurrencesActivity" />
         <activity android:name="br.ifal.app.diskwoman.activities.CallActivity" />
+        <activity android:name="br.ifal.app.diskwoman.activities.AboutActivity" />
     </application>
 
 </manifest>
