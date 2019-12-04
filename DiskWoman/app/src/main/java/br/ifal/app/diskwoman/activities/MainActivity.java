@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import br.ifal.app.diskwoman.R;
@@ -36,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, RegisterOccurrenceActivity.class);
                 startActivity(i);
-
-                finish();
             }
         });
 
@@ -60,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(in);
                         break;
 
+                    case R.id.app_bar_list:
+                        Intent inten = new Intent(MainActivity.this,
+                                ListOccurrencesActivity.class);
+                        startActivity(inten);
+                        break;
                     default:
                         break;
                 }
