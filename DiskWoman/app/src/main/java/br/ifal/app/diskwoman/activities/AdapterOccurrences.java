@@ -41,28 +41,28 @@ public class AdapterOccurrences extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_item_occurrences , parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_item_occurrences,
+                parent, false);
 
-        Occurrences occ = listOccurrences.get(position);
+        Occurrences occu = listOccurrences.get(position);
 
         TextView textViewTitle = view.findViewById(R.id.title_of_occurrence);
         TextView textViewDate= view.findViewById(R.id.date_of_occurrence);
 
-        textViewTitle.setText(occ.getTitle());
-        textViewDate.setText(occ.getDate());
+        textViewTitle.setText(occu.getTitle());
+        textViewDate.setText(occu.getDate());
 
         return view;
     }
 
-    public void update(List<Occurrences> occurrences) {
+    public void update(List<Occurrences> occurrence) {
         listOccurrences.clear();
-        listOccurrences.addAll(occurrences);
+        listOccurrences.addAll(occurrence);
         notifyDataSetChanged();
     }
 
-    public void remove(Occurrences occurrences) {
-        listOccurrences.remove(occurrences);
-        //notifyDataSetChanged();
+    public void delete(Occurrences occurrence) {
+        listOccurrences.remove(occurrence);
     }
 
 }

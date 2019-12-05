@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import androidx.fragment.app.Fragment;;
 import br.ifal.app.diskwoman.R;
 import br.ifal.app.diskwoman.beans.Occurrences;
 import br.ifal.app.diskwoman.daos.OccurrencesDAO;
@@ -54,7 +54,7 @@ public class ListOccurrencesActivity extends Fragment {
         occurrences = (Occurrences) adaptador.getItem(contextMenuInfo.position);
 
         if (item.getItemId() == R.id.menu_update) {
-            Intent i = new Intent(getContext(), RegisterOccurrenceActivity.class);
+            Intent i = new Intent(getActivity(), RegisterOccurrenceActivity.class);
             i.putExtra("occurrences", occurrences);
             startActivity(i);
         }

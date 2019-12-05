@@ -2,38 +2,30 @@ package br.ifal.app.diskwoman.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
+
 import br.ifal.app.diskwoman.R;
 
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
-
-        BottomAppBar btnApp = findViewById(R.id.bottomAppBar);
-        btnApp.replaceMenu(R.menu.bottomappbar_menu);
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, RegisterOccurrenceActivity.class);
@@ -41,41 +33,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnApp.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-
+        ImageButton btnPanic = findViewById(R.id.btn_panic_id);
+        btnPanic.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch(item.getItemId()) {
-                    case R.id.app_bar_home:
-                        toast("Você está na Página Inicial");
-                        break;
+            public void onClick(View v) {
 
-                    case R.id.app_bar_phone:
-                        Intent i = new Intent(MainActivity.this, CallActivity.class);
-                        startActivity(i);
-                        break;
+            }
+        });
 
-                    case R.id.app_bar_info:
-                        Intent in = new Intent(MainActivity.this, AboutActivity.class);
-                        startActivity(in);
-                        break;
+        ImageButton btnList = findViewById(R.id.appbar_list_id);
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    case R.id.app_bar_list:
-                        Intent inten = new Intent(MainActivity.this,
-                                ListOccurrencesActivity.class);
-                        startActivity(inten);
-                        break;
-                    default:
-                        break;
-                }
+            }
+        });
 
-                return false;
+        ImageButton btnHome = findViewById(R.id.appbar_home_id);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Você está na página inicial", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageButton btnCall = findViewById(R.id.appbar_phone_id);
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, CallActivity.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton btnAbout = findViewById(R.id.appbar_info_id);
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(i);
             }
         });
 
     }
 
-    private void toast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
 }
