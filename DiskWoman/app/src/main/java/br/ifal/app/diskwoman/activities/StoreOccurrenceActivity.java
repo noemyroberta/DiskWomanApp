@@ -29,6 +29,8 @@ import android.content.pm.PackageManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class StoreOccurrenceActivity extends AppCompatActivity {
 
     private ArrayAdapter adapter;
@@ -51,6 +53,17 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
+
+        FloatingActionButton fabBack = findViewById(R.id.btn_back_store);
+        fabBack.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StoreOccurrenceActivity.this, RegisterOccurrenceActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         storage = findViewById(R.id.btn_image_id);
         storage.setOnClickListener(new View.OnClickListener() {
