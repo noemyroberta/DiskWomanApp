@@ -100,8 +100,8 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
                     editTextDate.setText(occurrences.getDate());
 
                 } else {
-                    /*Occurrences occurrences = new Occurrences(title, description, date, zipCode, number);
-                    occDAO.save(occurrences);*/
+                    Occurrences occurrences = new Occurrences(title, description,, date, zipCode, number);
+                    occDAO.save(occurrences);
                 }
 
                 finish();
@@ -167,6 +167,3 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
 }
 
 
-    /* String title = editTextTitle.getText().toString();
-        String description = editTextDescription.getText().toString();
-        String date = editTextDate.getText().toString();*/
