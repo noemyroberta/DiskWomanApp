@@ -38,7 +38,6 @@ public class RegisterOccurrenceActivity  extends  AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent.hasExtra("occurrences") && intent.hasExtra("women")) {
-
             EditText editTextName = findViewById(R.id.edittext_name_id);
             EditText editTextEmail = findViewById(R.id.edittext_email_id);
             EditText editTextStreet = findViewById(R.id.edittext_street_id);
@@ -46,7 +45,6 @@ public class RegisterOccurrenceActivity  extends  AppCompatActivity {
             EditText editTextNeighborhood = findViewById(R.id.edittext_neighborhood_id);
             EditText editTextNumber = findViewById(R.id.edittext_number_id);
             EditText editTextZipCode = findViewById(R.id.edittext_zipcode_id);
-
 
             Occurrences occurrences = (Occurrences) intent.getSerializableExtra("occurrences");
             editTextCity.setText(occurrences.getCity());
@@ -58,7 +56,6 @@ public class RegisterOccurrenceActivity  extends  AppCompatActivity {
             Women women = (Women) intent.getSerializableExtra("women");
             editTextName.setText(women.getName());
             editTextEmail.setText(women.getEmail());
-
         }
 
         Button btnSend = findViewById(R.id.btn_send_id);
@@ -97,8 +94,6 @@ public class RegisterOccurrenceActivity  extends  AppCompatActivity {
                     occDAO.update(occurrences);
                     womDAO.update(women);
 
-
-
                 } else {
                     Intent it = new Intent(RegisterOccurrenceActivity.this, StoreOccurrenceActivity.class);
                     it.putExtra("zipCode", zipCode);
@@ -106,13 +101,10 @@ public class RegisterOccurrenceActivity  extends  AppCompatActivity {
                     it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(it);
 
-
-
                     Women women = new Women(name, email);
                     womDAO.save(women);
-
-
                 }
+
                 finish();
             }
 

@@ -1,22 +1,35 @@
 package br.ifal.app.diskwoman.activities;
 
+import android.Manifest;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import br.ifal.app.diskwoman.R;
 
+public class MainActivity extends AppCompatActivity
+        implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-public class MainActivity extends AppCompatActivity {
-
+    private GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (ActivityCompat.checkSelfPermission(
+                        MainActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+                    String [] permission = { android.Manifest.permission.ACCESS_COARSE_LOCATION };
+                    ActivityCompat.requestPermissions(
+                            MainActivity.this, permission, 123);
+                } else if (deviceHasGoogleAccount() == false){
+                    Toast.makeText(MainActivity.this, "Você precisa ter uma conta Google", Toast.LENGTH_LONG).show();
+                } else {
+                    callConnect();
+                }
+
             }
         });
 
@@ -45,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(MainActivity.this, ListOccurrencesActivity.class);
+                startActivity(i);
             }
         });
 
@@ -76,5 +103,53 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private boolean deviceHasGoogleAccount(){
+        AccountManager accMan = AccountManager.get(this);
+        Account[] accArray = accMan.getAccountsByType("com.google");
+        return accArray.length >= 1 ? true : false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION)
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            callConnect();
+        }
+    }
+
+    private synchronized void callConnect() {
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addOnConnectionFailedListener(this)
+                .addConnectionCallbacks(this)
+                .addApi(LocationServices.API)
+                .build();
+
+        googleApiClient.connect();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+
+        if (location != null) {
+            Log.i("LOG", "Latitude: "+location.getLatitude());
+            Log.i("LOG", "Longitude: "+location.getLongitude());
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+
 
 }

@@ -24,7 +24,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.android.support:support-v4:28.0.1'
+    implementation 'com.google.android.gms:play-services:6.5.87'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.material:material:1.0.0-alpha1'
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'

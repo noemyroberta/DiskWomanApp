@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <ListView
-            android:id="@+id/listview_occurrences_id"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_back_id"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="12dp"
+            app:srcCompat="@drawable/ic_back"/>
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</LinearLayout>
+                <ListView
+                    android:id="@+id/listview_occurrences_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+</RelativeLayout>
+
+
+
