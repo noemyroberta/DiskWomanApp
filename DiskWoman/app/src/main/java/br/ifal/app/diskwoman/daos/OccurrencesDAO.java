@@ -35,7 +35,6 @@ public class OccurrencesDAO {
         data.put("occu_date", occurrence.getDate());
         data.put("occu_address_cep", occurrence.getAddressCep());
         data.put("occu_address_number", occurrence.getAddressNumber());
-        data.put("occu_address_complement", occurrence.getAddressComplement());
 
         return data;
     }
@@ -55,10 +54,9 @@ public class OccurrencesDAO {
             String date = cursor.getString(cursor.getColumnIndex("occu_date"));
             String addressCep = cursor.getString(cursor.getColumnIndex("occu_address_cep"));
             String addressNumber = cursor.getString(cursor.getColumnIndex("occu_address_number"));
-            String addressComplement = cursor.getString(cursor.getColumnIndex("occu_address_complement"));
 
             list.add(new Occurrences(
-                    id, title, description, image, date, addressCep, addressNumber, addressComplement
+                    id, title, description, image, date, addressCep, addressNumber
             ));
         }
 

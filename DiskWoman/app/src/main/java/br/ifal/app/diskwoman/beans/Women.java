@@ -14,6 +14,11 @@ public class Women implements Serializable {
         this.email = email;
     }
 
+    public Women (String name, String email){
+        this.name = name;
+        this.email = email;
+    }
+
     public Women() {
 
     }

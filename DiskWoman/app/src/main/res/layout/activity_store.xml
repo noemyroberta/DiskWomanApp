@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:background="#f9ede9"
+        android:background="#000000"
         android:orientation="vertical">
 
         <TextView
@@ -56,15 +56,15 @@
             android:textColor="#000000"
             android:textSize="1dp" />
 
+
         <EditText
             android:id="@+id/edittext_desc_id"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="86dp"
             android:layout_marginBottom="12dp"
             android:background="#FFFF"
             android:hint="Descrição mais detalhada possível do ocorrido"
             android:textColor="#000" />
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Imagem ou Vídeo Relativo à Ocorrência (Opcional)"
+            android:text="Imagem relativa à Ocorrência (Opcional)"
             android:textColor="#FFFF"
             android:textSize="12dp" />
 
@@ -102,14 +102,6 @@
                 android:text="SELECIONAR IMAGEM"
                 android:textColor="#FFFF" />
 
-            <Button
-                android:id="@+id/btn_media_id"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="SELECIONAR VÍDEO"
-                android:textColor="#FFFF" />
-
 
         </LinearLayout>
 
@@ -118,8 +110,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-
-        </LinearLayout>
 
         <Button
             android:id="@+id/btn_register_id"
