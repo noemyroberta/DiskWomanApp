@@ -7,15 +7,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ConnectionFactory extends SQLiteOpenHelper {
 
     public ConnectionFactory(Context context) {
-        super(context, "db_diskwoman", null, 2);
+        super(context, "db_diskwomen", null, 2);
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String sqlWoman = "" +
-                "CREATE TABLE tb_womans (" +
+        String sqlWomen = "" +
+                "CREATE TABLE tb_women (" +
                 "   woma_id INTEGER PRIMARY KEY," +
                 "   woma_name TEXT," +
                 "   woma_email TEXT" +
@@ -57,11 +57,11 @@ public class ConnectionFactory extends SQLiteOpenHelper {
                 "   FOREIGN KEY (occu_offe_id)" +
                 "   REFERENCES tb_offenders (offe_id)," +
                 "   FOREIGN KEY (occu_woma_id)" +
-                "   REFERENCES tb_womans (woma_id)" +
+                "   REFERENCES tb_women (woma_id)" +
                 ");";
 
 
-        db.execSQL(sqlWoman);
+        db.execSQL(sqlWomen);
         db.execSQL(sqlInvolved);
         db.execSQL(sqlOffenders);
         db.execSQL(sqlOccurrences);
@@ -69,7 +69,7 @@ public class ConnectionFactory extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS db_diskwoman";
+        String sql = "DROP TABLE IF EXISTS db_diskwomen";
 
         db.execSQL(sql);
         onCreate(db);

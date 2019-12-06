@@ -5,16 +5,33 @@ import java.io.Serializable;
 public class Occurrences implements Serializable {
 
     private int id;
+    private String city;
+    private String street;
+    private String neighborhood;
     private String title;
     private String description;
     private String image;
     private String date;
     private String addressCep;
     private String addressNumber;
-    private String addressComplement;
+
+    public Occurrences( int id, String city, String street, String neighborhood, String title, String description, String image, String date,
+                      String addressCep, String addressNumber){
+        this.id = id;
+        this.city = city;
+        this.street = street;
+        this.neighborhood = neighborhood;
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.date = date;
+        this.addressCep = addressCep;
+        this.addressNumber = addressNumber;
+
+    }
 
     public Occurrences(int id, String title, String description, String image, String date,
-                       String addressCep, String addressNumber, String addressComplement) {
+                       String addressCep, String addressNumber) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -22,11 +39,11 @@ public class Occurrences implements Serializable {
         this.date = date;
         this.addressCep = addressCep;
         this.addressNumber = addressNumber;
-        this.addressComplement = addressComplement;
     }
 
-    public Occurrences() {
-
+    public Occurrences(String addressCep, String addressNumber) {
+        this.addressCep = addressCep;
+        this.addressNumber = addressNumber;
     }
 
     public int getId() {
@@ -34,7 +51,31 @@ public class Occurrences implements Serializable {
     }
 
     public void setId(int id) {
-        id = id;
+       this.id = id;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
+    public String getStreet(){
+        return  street;
+    }
+
+    public void setStreet(String street){
+       this.street = street;
+    }
+
+    public String getNeighborhood(){
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood){
+        this.neighborhood = neighborhood;
     }
 
     public String getTitle() {
@@ -77,11 +118,6 @@ public class Occurrences implements Serializable {
 
     public void setAddressNumber(String addressNumber) { this.addressNumber = addressNumber; }
 
-    public String getAddressComplement() { return addressComplement; }
-
-    public void setAddressComplement(String addressComplement) {
-        this.addressComplement = addressComplement;
-    }
 
     @Override
     public String toString() {
@@ -93,7 +129,6 @@ public class Occurrences implements Serializable {
                 ", date ='" + date + '\'' +
                 ", cep ='" + addressCep + '\'' +
                 ", number ='" + addressNumber + '\'' +
-                ", reference ='" + addressComplement + '\'' +
                 '}';
     }
 }

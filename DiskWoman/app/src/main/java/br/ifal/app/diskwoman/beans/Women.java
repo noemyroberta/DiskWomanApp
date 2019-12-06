@@ -14,6 +14,11 @@ public class Women implements Serializable {
         this.email = email;
     }
 
+    public Women (String name, String email){
+        this.name = name;
+        this.email = email;
+    }
+
     public Women() {
 
     }
@@ -44,7 +49,7 @@ public class Women implements Serializable {
 
     @Override
     public String toString() {
-        return "Womans{" +
+        return "Women{" +
                 "Id =" + id +
                 ", name ='" + name + '\'' +
                 ", email ='" + email + '\'' +
