@@ -41,12 +41,6 @@ public class Occurrences implements Serializable {
         this.addressNumber = addressNumber;
     }
 
-    public Occurrences(String title, String description, String date) {
-        this.title = title;
-        this.description = description;
-        this.date = date;
-    }
-
     public int getId() {
         return id;
     }
