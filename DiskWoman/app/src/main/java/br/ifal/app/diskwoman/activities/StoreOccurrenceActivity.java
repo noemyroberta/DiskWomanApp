@@ -1,35 +1,41 @@
 package br.ifal.app.diskwoman.activities;
 
 
-import android.Manifest;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import android.provider.MediaStore;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import androidx.core.content.FileProvider;
 
+import java.io.File;
 import br.ifal.app.diskwoman.beans.Occurrences;
-import br.ifal.app.diskwoman.beans.Women;
-import br.ifal.app.diskwoman.services.QueryTask;
+import br.ifal.app.diskwoman.BuildConfig;
 import br.ifal.app.diskwoman.R;
 
 import br.ifal.app.diskwoman.daos.OccurrencesDAO;
 
 import android.content.pm.PackageManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class StoreOccurrenceActivity extends AppCompatActivity {
 
     private ArrayAdapter adapter;
     private Button storage, register;
+    private String filePath;
 
-    private static final int STORAGE_PERMISSION_CODE = 100;
+    private static final int REQUEST_CODE = 100;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -50,9 +56,20 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
         storage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkPermission(
-                        Manifest.permission.READ_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE
-                );
+
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                filePath = getExternalFilesDir (null) + "/" + System.currentTimeMillis() + ".jpg";
+                File file = new File(filePath);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        FileProvider.getUriForFile(
+                                StoreOccurrenceActivity.this,
+                                BuildConfig.APPLICATION_ID + ".provider",
+                                file
+                        ));
+
+                startActivityForResult(intent, 100);
+
             }
         });
 
@@ -95,13 +112,28 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
 
     }
 
-    public void checkPermission(String permission, int requestCode) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        setImage(filePath);
+    }
+
+    private void setImage(String foto){
+        ImageView imageView = findViewById(R.id.form_img);
+        Bitmap bitmap = BitmapFactory.decodeFile(foto);
+        imageView.setImageBitmap(bitmap);
+        imageView.setTag(foto);
+    }
+
+
+    /*public void checkPermission(String permission, int requestCode) {
 
         if (ContextCompat.checkSelfPermission(StoreOccurrenceActivity.this, permission)
                 == PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(StoreOccurrenceActivity.this, new String[]{permission},
                     requestCode);
+
         } else {
 
             Toast.makeText(StoreOccurrenceActivity.this, "Permissão já concedida",
@@ -115,7 +147,7 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
                                           int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == STORAGE_PERMISSION_CODE) {
+        if (requestCode == REQUEST_CODE) {
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
@@ -130,7 +162,7 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    }*/
 
 }
 
@@ -138,10 +170,3 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
     /* String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
         String date = editTextDate.getText().toString();*/
-
-
-
-
-
-
-/**/

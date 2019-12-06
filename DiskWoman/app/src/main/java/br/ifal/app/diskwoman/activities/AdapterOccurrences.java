@@ -54,14 +54,13 @@ public class AdapterOccurrences extends BaseAdapter {
         return view;
     }
 
-    public void update(List<Occurrences> occurrence) {
+    public void update(List<Occurrences> occurrences) {
         listOccurrences.clear();
-        listOccurrences.addAll(occurrence);
+        listOccurrences.addAll(occurrences);
         notifyDataSetChanged();
     }
 
-    public void delete(Occurrences occurrence) {
-        listOccurrences.remove(occurrence);
+    public void delete(Occurrences occurrences) {
+        listOccurrences.remove(occurrences);
     }
-
 }
