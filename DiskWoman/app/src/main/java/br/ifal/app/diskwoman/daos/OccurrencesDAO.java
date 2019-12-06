@@ -29,7 +29,6 @@ public class OccurrencesDAO {
 
     private ContentValues getData(Occurrences occurrence) {
         ContentValues data = new ContentValues();
-
         data.put("occu_title", occurrence.getTitle());
         data.put("occu_description", occurrence.getDescription());
         data.put("occu_image", occurrence.getImage());

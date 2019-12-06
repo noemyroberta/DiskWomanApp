@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:background="#FF7278"
+        android:background="#f9ede9"
         android:orientation="vertical">
 
         <TextView
@@ -18,7 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
             android:text="         Registro de Ocorrência "
-            android:textColor="#FFFF"
+            android:textColor="#000000"
             android:textSize="26dp" />
 
         <TextView

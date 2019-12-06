@@ -5,6 +5,9 @@ import java.io.Serializable;
 public class Occurrences implements Serializable {
 
     private int id;
+    private String city;
+    private String street;
+    private String neighborhood;
     private String title;
     private String description;
     private String image;
@@ -12,6 +15,22 @@ public class Occurrences implements Serializable {
     private String addressCep;
     private String addressNumber;
     private String addressComplement;
+
+    public Occurrences( int id, String city, String street, String neighborhood, String title, String description, String image, String date,
+                      String addressCep, String addressNumber, String addressComplement){
+        this.id = id;
+        this.city = city;
+        this.street = street;
+        this.neighborhood = neighborhood;
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.date = date;
+        this.addressCep = addressCep;
+        this.addressNumber = addressNumber;
+        this.addressComplement = addressComplement;
+
+    }
 
     public Occurrences(int id, String title, String description, String image, String date,
                        String addressCep, String addressNumber, String addressComplement) {
@@ -35,6 +54,30 @@ public class Occurrences implements Serializable {
 
     public void setId(int id) {
         id = id;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public void setCity(String city){
+        city = city;
+    }
+
+    public String getStreet(){
+        return  street;
+    }
+
+    public void setStreet(String street){
+        street = street;
+    }
+
+    public String getNeighborhood(){
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood){
+        neighborhood = neighborhood;
     }
 
     public String getTitle() {

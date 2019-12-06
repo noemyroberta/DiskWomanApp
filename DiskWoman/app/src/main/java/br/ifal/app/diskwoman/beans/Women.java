@@ -2,19 +2,19 @@ package br.ifal.app.diskwoman.beans;
 
 import java.io.Serializable;
 
-public class Womans implements Serializable {
+public class Women implements Serializable {
 
     private int id;
     private String name;
     private String email;
 
-    public Womans(int id, String name, String email) {
+    public Women(int id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
 
-    public Womans() {
+    public Women() {
 
     }
 
@@ -44,7 +44,7 @@ public class Womans implements Serializable {
 
     @Override
     public String toString() {
-        return "Womans{" +
+        return "Women{" +
                 "Id =" + id +
                 ", name ='" + name + '\'' +
                 ", email ='" + email + '\'' +
