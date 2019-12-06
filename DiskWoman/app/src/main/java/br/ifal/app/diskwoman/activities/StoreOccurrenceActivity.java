@@ -119,7 +119,7 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
     }
 
     private void setImage(String foto){
-        ImageView imageView = findViewById(R.id.form_img);
+        ImageView imageView = findViewById(R.id.form_ins_img);
         Bitmap bitmap = BitmapFactory.decodeFile(foto);
         imageView.setImageBitmap(bitmap);
         imageView.setTag(foto);
@@ -156,7 +156,6 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
 
             } else {
-
 
                 Toast.makeText(StoreOccurrenceActivity.this, "Permissão não concedida",
                         Toast.LENGTH_SHORT).show();
