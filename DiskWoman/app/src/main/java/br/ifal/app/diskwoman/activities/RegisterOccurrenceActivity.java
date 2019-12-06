@@ -84,7 +84,7 @@ public class RegisterOccurrenceActivity  extends  AppCompatActivity {
                 WomenDAO womDAO = new WomenDAO(RegisterOccurrenceActivity.this);
                 OccurrencesDAO occDAO = new OccurrencesDAO(RegisterOccurrenceActivity.this);
 
-                Intent intent = getIntent();
+                Intent intent = getIntent() ;
                 if (intent.hasExtra("occurrences") && intent.hasExtra("women")) {
                     Occurrences occurrences = (Occurrences) intent.getSerializableExtra("occurrences");
                     occurrences.setAddressCep(zipCode);
