@@ -29,6 +29,8 @@ import android.content.pm.PackageManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class StoreOccurrenceActivity extends AppCompatActivity {
 
     private ArrayAdapter adapter;
@@ -51,6 +53,17 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
+
+        FloatingActionButton fabBack = findViewById(R.id.btn_back_store);
+        fabBack.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StoreOccurrenceActivity.this, RegisterOccurrenceActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         storage = findViewById(R.id.btn_image_id);
         storage.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +132,7 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
     }
 
     private void setImage(String foto){
-        ImageView imageView = findViewById(R.id.form_img);
+        ImageView imageView = findViewById(R.id.form_ins_img);
         Bitmap bitmap = BitmapFactory.decodeFile(foto);
         imageView.setImageBitmap(bitmap);
         imageView.setTag(foto);
@@ -156,7 +169,6 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
 
             } else {
-
 
                 Toast.makeText(StoreOccurrenceActivity.this, "Permissão não concedida",
                         Toast.LENGTH_SHORT).show();
