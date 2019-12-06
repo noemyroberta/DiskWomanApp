@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,14 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
 
     private static final int STORAGE_PERMISSION_CODE = 100;
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String zipCode = intent.getStringExtra("zipCode");
+        String number = intent.getStringExtra("number");
+        setIntent(intent);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,29 +46,36 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
-        register = findViewById(R.id.btn_register_id);
-        register.setOnClickListener(new view.onClickListenet() {
-
-
+        storage = findViewById(R.id.btn_image_id);
+        storage.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
+                checkPermission(
+                        Manifest.permission.READ_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE
+                );
+            }
+        });
 
+
+        register = findViewById(R.id.btn_register_id);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 EditText editTextTitle = findViewById(R.id.edittext_title_id);
                 EditText editTextDescription = findViewById(R.id.edittext_desc_id);
                 EditText editTextDate = findViewById(R.id.edittext_date_id);
 
                 String title = editTextTitle.getText().toString();
-                String description = editTextDescription.getDescription().toString();
-                String date = editTextDate.getDate().toString();
+                String description = editTextDescription.getText().toString();
+                String date = editTextDate.getText().toString();
 
                 OccurrencesDAO occDAO = new OccurrencesDAO(StoreOccurrenceActivity.this);
 
+                String zipCode = getIntent().getStringExtra("zipCode");
+                String number = getIntent().getStringExtra("number");
 
                 Intent intent = getIntent();
                 if (intent.hasExtra("occurrences")) {
-
-                    EditText editTextTitle = findViewById(R.id.edittext_title_id);
-                    EditText editTextDescription = findViewById(R.id.edittext_desc_id);
-                    EditText editTextDate = findViewById(R.id.edittext_date_id);
 
                     Occurrences occurrences = (Occurrences) intent.getSerializableExtra("occurrences");
                     editTextTitle.setText(occurrences.getTitle());
@@ -67,10 +83,8 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
                     editTextDate.setText(occurrences.getDate());
 
                 } else {
-
-                    Occurrences occurrences = new Occurrences(title, description, date);
-                    occDAO.save(occurrences);
-
+                    /*Occurrences occurrences = new Occurrences(title, description, date, zipCode, number);
+                    occDAO.save(occurrences);*/
                 }
 
                 finish();
@@ -79,61 +93,49 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
 
         });
 
-        storage = findViewById(R.id.btn_image_id);
-        storage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
-            }
-        });
+    }
+
+    public void checkPermission(String permission, int requestCode) {
+
+        if (ContextCompat.checkSelfPermission(StoreOccurrenceActivity.this, permission)
+                == PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(StoreOccurrenceActivity.this, new String[]{permission},
+                    requestCode);
+        } else {
+
+            Toast.makeText(StoreOccurrenceActivity.this, "Permissão já concedida",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 
-        public void checkPermission (String Manifest.permission.READ_EXTERNAL_STORAGE,int requestCode){
+    public void onRequestPermissionResult(int requestCode, String[] permissions,
+                                          int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            if (ContextCompat.checkSelfPermission(StoreOccurrenceActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED){
+        if (requestCode == STORAGE_PERMISSION_CODE) {
 
-                ActivityCompat.requestPermissions(StoreOccurrenceActivity.this, new String[]{permission},
-                        requestCode);
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+
+                Toast.makeText(StoreOccurrenceActivity.this, "Permissão concedida",
+                        Toast.LENGTH_SHORT).show();
+
             } else {
 
-                Toast.makeText(StoreOccurrenceActivity.this, "Permissão já concedida",
+
+                Toast.makeText(StoreOccurrenceActivity.this, "Permissão não concedida",
                         Toast.LENGTH_SHORT).show();
             }
-
         }
     }
 
-        public void onRequestPermissionResult ( int requestCode, String[] permissions,
-        int[] grantResults){
-
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            if (requestCode == STORAGE_PERMISSION_CODE) {
-
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    Toast.makeText(StoreOccurrenceActivity.this, "Permissão concedida",
-                            Toast.LENGTH_SHORT).show();
-
-                } else {
-
-                    Toast.makeText(StoreOccurrenceActivity.this, "Permissão não concedida",
-                            Toast.LENGTH_SHORT).show();
-
-                }
-
-            }
+}
 
 
-        }
-
-
-    }
-
-
-
-       /* String title = editTextTitle.getText().toString();
+    /* String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
         String date = editTextDate.getText().toString();*/
 
@@ -142,13 +144,4 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
 
 
 
-    /*@Override
-    protected void onNewIntent(Intent intent) {
-
-        String zipCode = intent.getStringExtra("zipCode");
-        String number = intent.getDoubleExtra("number", -1);
-
-        if(zipCode != null)
-            carro.add( new Desejo(texto,numero));
-        carroAdapter  = new ArrayAdapter<Carro>(this, android.R.layout.simple_list_item_1,carro );
-        listaCarro.setAdapter(carroAdapter);*/
+/**/

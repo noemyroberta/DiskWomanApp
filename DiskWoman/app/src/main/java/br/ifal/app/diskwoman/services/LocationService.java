@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 public class LocationService
         implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    graziely
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
