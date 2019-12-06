@@ -31,7 +31,6 @@ public class InvolvedDAO {
     private ContentValues getData(Involved involved) {
         ContentValues data = new ContentValues();
 
-        data.put("invo_id", involved.getId());
         data.put("invo_name", involved.getName());
         data.put("invo_age", involved.getAge());
 

@@ -30,7 +30,6 @@ public class WomenDAO {
     private ContentValues getData(Women women) {
         ContentValues data = new ContentValues();
 
-        data.put("woma_id", women.getId());
         data.put("woma_name", women.getName());
         data.put("woma_email", women.getEmail());
 

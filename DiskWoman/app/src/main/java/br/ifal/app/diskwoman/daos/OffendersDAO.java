@@ -30,7 +30,6 @@ public class OffendersDAO {
 
     private ContentValues getData(Offenders offender) {
         ContentValues data = new ContentValues();
-        data.put("offe_id", offender.getId());
         data.put("offe_name", offender.getName());
         data.put("offe_age", offender.getAge());
         data.put("offe_apperance", offender.getAppearence());

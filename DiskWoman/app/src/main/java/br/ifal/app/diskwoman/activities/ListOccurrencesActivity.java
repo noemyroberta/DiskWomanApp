@@ -20,14 +20,13 @@ import br.ifal.app.diskwoman.daos.OccurrencesDAO;
 public class ListOccurrencesActivity extends AppCompatActivity {
 
     private Occurrences occurrences;
-    private OccurrencesDAO occDAO;
+    private OccurrencesDAO occDAO = new OccurrencesDAO(this);
     private AdapterOccurrences adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        occDAO = new OccurrencesDAO(this);
+        setContentView(R.layout.activity_list_occurrences);
 
         adapter = new AdapterOccurrences(occDAO.listOccurrences(), this);
 
@@ -42,6 +41,7 @@ public class ListOccurrencesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ListOccurrencesActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
     }

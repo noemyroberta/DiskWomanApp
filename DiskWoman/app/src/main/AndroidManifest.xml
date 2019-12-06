@@ -21,7 +21,7 @@
         android:allowBackup="true">
 
 
-        <activity android:name="activities.SplashScreenActivity">
+        <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +35,7 @@
         <activity android:name="br.ifal.app.diskwoman.activities.StoreOccurrenceActivity" />
         <activity android:name="br.ifal.app.diskwoman.activities.CallActivity" />
         <activity android:name="br.ifal.app.diskwoman.activities.AboutActivity" />
+        <activity android:name=".activities.ListOccurrencesActivity"/>
     </application>
 
 </manifest>
