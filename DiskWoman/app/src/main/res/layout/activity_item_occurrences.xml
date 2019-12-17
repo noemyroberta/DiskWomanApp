@@ -17,7 +17,7 @@
         android:id="@+id/date_of_occurrence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColorHint=""
+        android:textColorHint="@color/colorPurplePrimary"
         android:text="Data"
         android:textSize="20sp"
         android:textColor="@color/colorGrey"

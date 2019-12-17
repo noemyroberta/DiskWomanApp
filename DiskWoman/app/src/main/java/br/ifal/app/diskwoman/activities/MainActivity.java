@@ -20,7 +20,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -51,19 +50,22 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                if (ActivityCompat.checkSelfPermission(
-                        MainActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED ||
+                        ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED) {
 
-                    String [] permission = { android.Manifest.permission.ACCESS_COARSE_LOCATION };
+                    String[] permission = {android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
                     ActivityCompat.requestPermissions(
-                            MainActivity.this, permission, 123);
-                } else if (deviceHasGoogleAccount() == false){
-                    Toast.makeText(MainActivity.this, "Você precisa ter uma conta Google", Toast.LENGTH_LONG).show();
+                            MainActivity.this, permission,123);
                 } else {
+                    System.out.println("Location permissions granted, starting location");
                     callConnect();
                 }
 
+                if (deviceHasGoogleAccount() != true) {
+                    Toast.makeText(MainActivity.this, "Você precisa ter uma conta Google", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private boolean deviceHasGoogleAccount(){
+    private boolean deviceHasGoogleAccount() {
         AccountManager accMan = AccountManager.get(this);
         Account[] accArray = accMan.getAccountsByType("com.google");
         return accArray.length >= 1 ? true : false;
@@ -113,11 +115,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION)
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            callConnect();
+        if (requestCode == 123) {
+            if (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION) &&
+                    permissions[1].equals(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                System.out.println("Location permissions granted, starting location");
+                callConnect();
+            }
         }
+
     }
 
     private synchronized void callConnect() {
@@ -135,8 +141,8 @@ public class MainActivity extends AppCompatActivity
         Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
 
         if (location != null) {
-            Log.i("LOG", "Latitude: "+location.getLatitude());
-            Log.i("LOG", "Longitude: "+location.getLongitude());
+            Log.i("LOG", "Latitude: " + location.getLatitude());
+            Log.i("LOG", "Longitude: " + location.getLongitude());
         }
     }
 
@@ -149,7 +155,6 @@ public class MainActivity extends AppCompatActivity
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
-
 
 
 }

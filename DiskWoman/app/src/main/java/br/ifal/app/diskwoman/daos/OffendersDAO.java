@@ -71,7 +71,6 @@ public class OffendersDAO {
                         id, name, appearence, age, male
                 ));
             }
-
         }
 
         cursor.close();
