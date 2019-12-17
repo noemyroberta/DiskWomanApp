@@ -27,7 +27,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+               In
+
+
+
+            </intent-filter>
         </activity>
+
 
 
         <activity android:name="br.ifal.app.diskwoman.activities.MainActivity" />
@@ -36,6 +43,10 @@
         <activity android:name="br.ifal.app.diskwoman.activities.CallActivity" />
         <activity android:name="br.ifal.app.diskwoman.activities.AboutActivity" />
         <activity android:name=".activities.ListOccurrencesActivity"/>
+
+
+
     </application>
+
 
 </manifest>
