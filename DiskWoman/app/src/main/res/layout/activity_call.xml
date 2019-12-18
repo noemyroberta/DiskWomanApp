@@ -5,96 +5,95 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/official_logo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="-2dp">
-        </ImageView>
+            android:layout_marginTop="-2dp"
+            android:src="@drawable/official_logo2"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:background="@color/colorWhite"
-        android:layout_marginBottom="100dp">
+        android:layout_marginBottom="100dp"
+        android:background="@color/colorWhite">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="12dp"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imagebutton_call_id_1"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:background="#9837CC"
+                app:srcCompat="@drawable/ic_call" />
+
+            <ImageButton
+                android:id="@+id/imagebutton_call_id_2"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:background="#9837CC"
+                app:srcCompat="@drawable/ic_call" />
+
+            <ImageButton
+                android:id="@+id/imagebutton_call_id_3"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:background="#9837CC"
+                app:srcCompat="@drawable/ic_call" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="12dp"
+                android:layout_marginTop="-8dp"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/imagebutton_call_id_1"
-                    android:layout_width="80dp"
-                    android:layout_height="60dp"
-                    android:background="#9837CC"
-                    app:srcCompat="@drawable/ic_call"
-                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/textview_institution_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Delegacia da Mulher"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/imagebutton_call_id_2"
-                    android:layout_width="80dp"
-                    android:layout_height="60dp"
-                    android:background="#9837CC"
-                    app:srcCompat="@drawable/ic_call"
-                    android:layout_marginBottom="10dp"/>
-
-                <ImageButton
-                    android:id="@+id/imagebutton_call_id_3"
-                    android:layout_width="80dp"
-                    android:layout_height="60dp"
-                    android:background="#9837CC"
-                    app:srcCompat="@drawable/ic_call"
-                    android:layout_marginBottom="10dp"/>
-
-
+                <TextView
+                    android:id="@+id/textview_number_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="35216318"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical">
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="-8dp">
-
-    <TextView
-        android:id="@+id/textview_institution_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delegacia da Mulher"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/textview_number_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="35216318"
-        android:textSize="18dp"
-        android:textStyle="normal"
-        android:layout_marginBottom="10dp"/>
-</LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="20dp">
 
 
                 <TextView
@@ -111,37 +110,29 @@
                     android:layout_height="wrap_content"
                     android:text="180"
                     android:textSize="18dp"
-                    android:textStyle="normal"/>
-                </LinearLayout>
+                    android:textStyle="normal" />
+            </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textview_institution_3"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/textview_institution_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Serviço Móvel de Urgência - SAMU"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/textview_number_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="192"
-                        android:textSize="18dp"
-                        android:textStyle="normal" />
-                </LinearLayout>
+                    android:text="Serviço Móvel de Urgência - SAMU"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-
-
-
-
-
-</RelativeLayout>
-
-
+                <TextView
+                    android:id="@+id/textview_number_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="192"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
             </LinearLayout>
 
         </LinearLayout>

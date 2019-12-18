@@ -7,96 +7,98 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import br.ifal.app.diskwoman.R;
 
 public class CallActivity extends AppCompatActivity {
 
-    private Context context;
+    private static final int REQUEST_CALL = 123;
 
-    ImageButton imgBtnCall1;
-    ImageButton imgBtnCall2;
+    TextView number1 = findViewById(R.id.textview_institution_1);
+    TextView number2 = findViewById(R.id.textview_institution_2);
+    TextView number3 = findViewById(R.id.textview_institution_3);
 
-    TextView number1;
-    TextView number2;
-
-    int firstNumber;
-    int secondNumber;
+    TextView [] txtViewArray = {number1, number2, number3};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_call);
-
-        imgBtnCall1 = (ImageButton) findViewById(R.id.imagebutton_call_id_2);
-        imgBtnCall2 = (ImageButton) findViewById(R.id.imagebutton_call_id_1);
-
-        number1 = (TextView) findViewById(R.id.textview_number_1);
-        number2 = (TextView) findViewById(R.id.textview_number_2);
-
-        firstNumber = Integer.parseInt(number1.getText().toString());
-        secondNumber = Integer.parseInt(number2.getText().toString());
-
-        imgBtnCall1.setOnClickListener(new View.OnClickListener() {
+        ImageButton btn1 = findViewById(R.id.imagebutton_call_id_1);
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (ActivityCompat.checkSelfPermission(context,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-
-                    String[] permissions = {Manifest.permission.CALL_PHONE};
-                    ActivityCompat.requestPermissions(CallActivity.this, permissions,
-                            123);
-
-                } else {
-                    Intent i = new Intent(Intent.ACTION_CALL);
-                    i.setData(Uri.parse("tel:" + firstNumber));
+                if(ContextCompat.checkSelfPermission(CallActivity.this,Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(CallActivity.this,
+                            new String [] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                }
+                else {
+                    String call = "tel:"+ number1;
+                    Intent i = new Intent(Intent.ACTION_CALL, Uri.parse(call));
                     startActivity(i);
                 }
 
-            }
-        });
 
-        imgBtnCall2.setOnClickListener(new View.OnClickListener() {
+            }
+
+        });
+        ImageButton btn2 = findViewById(R.id.imagebutton_call_id_2);
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ActivityCompat.checkSelfPermission(context,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-
-                    String[] permissions = {Manifest.permission.CALL_PHONE};
-                    ActivityCompat.requestPermissions(CallActivity.this, permissions,
-                            123);
-
-                } else {
-                    Intent i = new Intent(Intent.ACTION_CALL);
-                    i.setData(Uri.parse("tel:" + secondNumber));
+                if(ContextCompat.checkSelfPermission(CallActivity.this,Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(CallActivity.this,
+                            new String [] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                }
+                else {
+                    String call = "tel:" + number2;
+                    Intent i = new Intent(Intent.ACTION_CALL, Uri.parse(call));
                     startActivity(i);
                 }
             }
         });
 
+        ImageButton btn3= findViewById(R.id.imagebutton_call_id_3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ContextCompat.checkSelfPermission(CallActivity.this,Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(CallActivity.this,
+                            new String [] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                }
+                else {
+                    String call = "tel:" + number2;
+                    Intent i = new Intent(Intent.ACTION_CALL, Uri.parse(call));
+                    startActivity(i);
+
+            }
+        });
     }
 
-    /*
-    @SuppressLint("MissingPermission")
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (permissions[0].equals(Manifest.permission.CALL_PHONE) &&
-                grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Intent i = new Intent(Intent.ACTION_CALL);
-            i.setData(Uri.parse("tel:" + firstNumber));
-            startActivity(i);
+        if (requestCode == REQUEST_CALL) {
+            if(grantResults.length > 0 && grantResults [0] == PackageManager.PERMISSION_GRANTED){
+
+                Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + txtViewArray[0]));
+                startActivity(i);
+            } else {
+                Toast.makeText(this,"Permission DENIED", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
-*/
-
 }

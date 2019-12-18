@@ -25,12 +25,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-               In
-
-
-
-            </intent-filter>
         </activity>
 
 
