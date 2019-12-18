@@ -32,7 +32,6 @@ public class RegisterOffendersActivity extends AppCompatActivity{
 
         Offenders offenders = (Offenders) intent.getSerializableExtra("offenders");
         editTextName.setText(offenders.getName());
-        editTextSex.setText(offenders.getSex());
         editTextAppearence.setText(offenders.getAppearence());
         editTextAge.setText(offenders.getAge());
         

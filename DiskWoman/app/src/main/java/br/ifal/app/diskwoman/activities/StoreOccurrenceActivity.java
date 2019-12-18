@@ -54,16 +54,6 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
-        FloatingActionButton fabBack = findViewById(R.id.btn_back_store);
-        fabBack.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(StoreOccurrenceActivity.this, RegisterOccurrenceActivity.class);
-                startActivity(i);
-            }
-        });
-
 
         storage = findViewById(R.id.btn_image_id);
         storage.setOnClickListener(new View.OnClickListener() {
@@ -113,8 +103,6 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
                     editTextDate.setText(occurrences.getDate());
 
                 } else {
-                    Occurrences occurrences = new Occurrences(title, description,, date, zipCode, number);
-                    occDAO.save(occurrences);
                 }
 
                 finish();
@@ -132,7 +120,7 @@ public class StoreOccurrenceActivity extends AppCompatActivity {
     }
 
     private void setImage(String foto){
-        ImageView imageView = findViewById(R.id.form_ins_img);
+        ImageView imageView = findViewById(R.id.form_img2);
         Bitmap bitmap = BitmapFactory.decodeFile(foto);
         imageView.setImageBitmap(bitmap);
         imageView.setTag(foto);
